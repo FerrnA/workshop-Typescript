@@ -49,4 +49,7 @@ let Fede: Student = {
 
 //Investiga sus diferencias
 
+
+
+
 export {}

@@ -19,14 +19,38 @@ class Person {
     getFullInfo() {
       return `${this.name} (${this.age} years old) - ${this.regular ? 'regular' : 'not regular'}`;
     }
+    getName(): string {
+      return this.name 
+    }
+    getAge(): number {
+      return this.age
+    }
+    getRegular(): boolean {
+      return this.regular
+    }
+    setAge(set: number): void {
+      this.age = set;
+    }
+    setRegular(set: boolean): void {
+      this.regular = set;
+    }
   }
   
   const student = new Student("Franco", 26, true);
   
   student.getFullInfo(); // "Franco (26 years old) - not regular"
-  student.name; // Property 'name' is protected and only accessible within class 'Person' and its subclasses
-  student.age; // Property 'age' is protected and only accessible within class 'Person' and its subclasses.
-  student.regular; // Property 'regular' is private and only accessible within class 'Student'
+  student.getName(); // Property 'name' is protected and only accessible within class 'Person' and its subclasses
+  student.getAge(); // Property 'age' is protected and only accessible within class 'Person' and its subclasses.
+  student.getRegular(); // Property 'regular' is private and only accessible within class 'Student'
+  student.setRegular(false);
+  let table = Object.fromEntries(Object.entries(student))
+  console.table(table)
+  table.name = student.getName();
+  table.age = student.getAge()
+  table.regular = student.getRegular()
+  console.table(table);
 
 //proba como cambiar los modificadores de atributos de la clase!
-  export {}
+  student.setAge(24);
+  console.log(student.getAge())
+  export {student}
