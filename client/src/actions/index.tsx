@@ -11,7 +11,7 @@ export interface User {
 }
 
 export interface FetchUsersAction {
-    type: ActionTypes.fetchUsers;
+    type: number;
     payload: User[];
   }
 

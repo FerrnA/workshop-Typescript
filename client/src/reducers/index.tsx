@@ -6,7 +6,7 @@ export interface StoreState {
 	users: User[]
 }
 
-export const reducers = combineReducers<StoreState>({
+export const reducers = combineReducers< StoreState >({
 	users: usersReducer
 });
 

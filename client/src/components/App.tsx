@@ -12,7 +12,8 @@ interface AppProps {
 function App(props: AppProps) {
 	useEffect(() => {
 		props.fetchUsers();
-	}, [props]);
+		//eslint-disable-next-line
+	}, []);
 
 	return (
 		<div>

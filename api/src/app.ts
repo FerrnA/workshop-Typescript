@@ -14,24 +14,16 @@ interface error {
 	status: number;
 	message: string;
 }
-app.use('/', routes);
 app.use(
 	cors({
 		origin: config.cors,
 		credentials: true,
 		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token'],
+		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Access-Control-Allow-Origin'],
 	})
-	);
-/* const options: cors.CorsOptions = {
-	allowedHeaders: ['Origin','X-Requested-With','Content-Type','Accept','X-Access-Token'],
-	credentials: true,
-	methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-	origin: config.cors,
-	preflightContinue: false,
-  }; */
-//app.use(cors(options));
-//app.options('*', cors<Request>(options));
+);
+app.use('/', routes);
+	
 app.use((err: error, req: Request, res: Response, next: NextFunction) => {
 	// eslint-disable-line no-unused-vars
 	const status = err.status || 500;
@@ -43,5 +35,15 @@ app.use((err: error, req: Request, res: Response, next: NextFunction) => {
 app.get('/', (req: Request, res: Response) => {
 	res.send('hola typescript!');
 });
-
+	
 export default app;
+	
+	/* const options: cors.CorsOptions = {
+		allowedHeaders: ['Origin','X-Requested-With','Content-Type','Accept','X-Access-Token'],
+		credentials: true,
+		methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+		origin: config.cors,
+		preflightContinue: false,
+	  }; */
+	//app.use(cors(options));
+	//app.options('*', cors<Request>(options));
